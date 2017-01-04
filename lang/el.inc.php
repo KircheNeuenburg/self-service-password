@@ -117,5 +117,20 @@ $messages['emptysetquestionsform'] = "Ορίστε τις ερωτήσεις α�
 $messages['emptysendsmsform'] = "Ζητήστε ένα μοναδικό αναγνωριστικό αλλαγής κωδικού";
 $messages['sameaslogin'] = "Ο νέος σας κωδικός είναι ίδιος με το όνομα χρήστη";
 $messages['policydifflogin'] = "Ο νέος σας κωδικός δεν πρέπει να είναι ίδιος με το όνομα χρήστη";
+$messages["menumailtoken"] = "Change email address";
+$messages["resetmailsubject"] = "Change your email address";
+$messages["resetmailmessage"] = "Hello {login},\n\nClick here to reset your password:\n{url}\n\nIf you didn't request a password reset, please ignore this email.";
+$messages['sendmailtokenhelp'] = "Enter your user name and your email address to change your email address. When you receive the email, click the link inside to complete the email address change.";
+$messages['confirmmail'] = "Confirm";
+$messages['newmail'] = "New email address";
+$messages['newmailrequired'] = "Your new email address is required";
+$messages['confirmmailrequired'] = "Please confirm your new email address";
+$messages['nomatchmail'] = "Email address mismatch";
+$messages['mailchanged'] = "Your email address was changed";
+$messages['resetmailbytokenhelp'] = "The link sent by email allows you to change your email address. To request a new link via email, <a href=\"?action=sendmailtoken\">click here</a>.";
+$messages['changemailmessage'] = "Hello {login},\n\nYour email address has been changed.\n\nIf you didn't request a email address change, please contact your administrator immediately.";
+$messages['changemailsubject'] = "Your email address has been changed";
+$messages['mailerror'] = "Email address was refused by the LDAP directory";
+$messages['mailnotvalid'] = "Email address is invalid";
 
 ?>
