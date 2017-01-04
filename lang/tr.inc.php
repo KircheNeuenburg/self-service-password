@@ -128,7 +128,7 @@ $messages['confirmmailrequired'] = "Please confirm your new email address";
 $messages['nomatchmail'] = "Email address mismatch";
 $messages['mailchanged'] = "Your email address was changed";
 $messages['resetmailbytokenhelp'] = "The link sent by email allows you to change your email address. To request a new link via email, <a href=\"?action=sendmailtoken\">click here</a>.";
-$messages['changemailmessage'] = "Hello {login},\n\nYour email address has been changed.\n\nIf you didn't request a email address change, please contact your administrator immediately.";
+$messages['changemailmessage'] = "Hello {login},\n\nYour email address has been changed to {newmail}.\n\nIf you didn't request a email address change, please contact your administrator immediately.";
 $messages['changemailsubject'] = "Your email address has been changed";
 $messages['mailerror'] = "Email address was refused by the LDAP directory";
 $messages['mailnotvalid'] = "Email address is invalid";

@@ -185,7 +185,7 @@ if ( $result === "" ) {
 
 # Change mail
 if ($result === "") {
-    $result = change_mail($ldap, $userdn, $newmail);
+    $result = change_mail($ldap, $userdn, $mail_attribute, $newmail);
 }
 
 # Delete token if all is ok

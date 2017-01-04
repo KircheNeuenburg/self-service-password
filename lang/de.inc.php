@@ -130,7 +130,7 @@ $messages['confirmmailrequired'] = "Bitte bestätigen Sie Ihre neue Email-Adress
 $messages['nomatchmail'] = "Email-Adressen stimmen nicht überein";
 $messages['mailchanged'] = "Ihre Email-Adresse wurde erfolgreich geändert";
 $messages['resetmailbytokenhelp'] = "Das mit der Mail versandte Token erlaubt Ihnen das Ändern Ihrer Email-Adresse. Um ein neues Token zu erhalten, <a href=\"?action=sendmailtoken\">klicken Sie hier</a>.";
-$messages['changemailmessage'] = "Hallo {login},\n\nihre Email-Adresse wurde geändert.\n\nWenn Sie dies nicht selbst veranlasst haben, melden Sie dies bitte umgehend Ihrem Administrator.\n\n";
+$messages['changemailmessage'] = "Hallo {login},\n\nihre Email-Adresse wurde zu {newmail} geändert.\n\nWenn Sie dies nicht selbst veranlasst haben, melden Sie dies bitte umgehend Ihrem Administrator.\n\n";
 $messages['changemailsubject'] = "Ihre Email-Adresse wurde geändert";
 $messages['mailerror'] = "Email-Adresse wurde vom LDAP nicht akzeptiert";
 $messages['mailnotvalid'] = "Email-Adresse ist ungültig";

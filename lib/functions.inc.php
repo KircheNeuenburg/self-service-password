@@ -119,11 +119,11 @@ function stripslashes_if_gpc_magic_quotes( $string ) {
 # Get message criticity
 function get_criticity( $msg ) {
 
-    if ( preg_match( "/nophpldap|nophpmhash|ldaperror|nomatch|badcredentials|passworderror|tooshort|toobig|minlower|minupper|mindigit|minspecial|forbiddenchars|sameasold|answermoderror|answernomatch|mailnomatch|tokennotsent|tokennotvalid|notcomplex|nophpmcrypt|smsnonumber|smscrypttokensrequired|nophpmbstring|nophpxml|smsnotsent|sameaslogin/" , $msg ) ) {
+    if ( preg_match( "/nophpldap|nophpmhash|ldaperror|nomatch|nomatchmail|badcredentials|passworderror|tooshort|toobig|minlower|minupper|mindigit|minspecial|forbiddenchars|sameasold|answermoderror|answernomatch|mailnomatch|tokennotsent|tokennotvalid|notcomplex|nophpmcrypt|smsnonumber|smscrypttokensrequired|nophpmbstring|nophpxml|smsnotsent|sameaslogin/" , $msg ) ) {
     return "danger";
     }
 	
-    if ( preg_match( "/(login|oldpassword|newpassword|confirmpassword|answer|question|password|mail|token)required|badcaptcha|tokenattempts/" , $msg ) ) {
+    if ( preg_match( "/(login|oldpassword|newpassword|confirmpassword|confirmmail|newmail|answer|question|password|mail|token)required|badcaptcha|tokenattempts/" , $msg ) ) {
         return "warning";
     }
 
@@ -360,7 +360,7 @@ function change_password( $ldap, $dn, $password, $ad_mode, $ad_options, $samba_m
 
 # Change mail
 # @return result code
-function change_mail( $ldap, $dn, $mail ) {
+function change_mail( $ldap, $dn, $mail_attribute, $mail ) {
 
     $result = "";
 
