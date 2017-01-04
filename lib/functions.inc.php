@@ -119,11 +119,11 @@ function stripslashes_if_gpc_magic_quotes( $string ) {
 # Get message criticity
 function get_criticity( $msg ) {
 
-    if ( preg_match( "/nophpldap|nophpmhash|ldaperror|nomatch|badcredentials|passworderror|tooshort|toobig|minlower|minupper|mindigit|minspecial|forbiddenchars|sameasold|answermoderror|answernomatch|mailnomatch|tokennotsent|tokennotvalid|notcomplex|nophpmcrypt|smsnonumber|smscrypttokensrequired|nophpmbstring|nophpxml|smsnotsent|sameaslogin/" , $msg ) ) {
+    if ( preg_match( "/nophpldap|nophpmhash|ldaperror|nomatch|nomatchmail|badcredentials|passworderror|tooshort|toobig|minlower|minupper|mindigit|minspecial|forbiddenchars|sameasold|answermoderror|answernomatch|mailnomatch|tokennotsent|tokennotvalid|notcomplex|nophpmcrypt|smsnonumber|smscrypttokensrequired|nophpmbstring|nophpxml|smsnotsent|sameaslogin/" , $msg ) ) {
     return "danger";
     }
 	
-    if ( preg_match( "/(login|oldpassword|newpassword|confirmpassword|answer|question|password|mail|token)required|badcaptcha|tokenattempts/" , $msg ) ) {
+    if ( preg_match( "/(login|oldpassword|newpassword|confirmpassword|confirmmail|newmail|answer|question|password|mail|token)required|badcaptcha|tokenattempts/" , $msg ) ) {
         return "warning";
     }
 
@@ -358,6 +358,33 @@ function change_password( $ldap, $dn, $password, $ad_mode, $ad_options, $samba_m
     return $result;
 }
 
+# Change mail
+# @return result code
+function change_mail( $ldap, $dn, $mail_attribute, $mail ) {
+
+    $result = "";
+
+    # Set mail value
+    $userdata[$mail_attribute] = $mail;
+
+
+    # Commit modification on directory
+    # Just replace with new mail
+    $replace = ldap_mod_replace($ldap, $dn, $userdata);
+
+
+    $errno = ldap_errno($ldap);
+
+    if ( $errno ) {
+        $result = "mailerror";
+        error_log("LDAP - Modify mail error $errno (".ldap_error($ldap).")");
+    } else {
+        $result = "mailchanged";
+    }
+
+    return $result;
+}
+
 /* @function encrypt(string $data)
  * Encrypt a data
  * @param data
@@ -509,6 +536,22 @@ function check_username_validity($username,$login_forbidden_chars) {
             $result = "badcredentials";
             error_log("Illegal characters in username $username (list of forbidden characters: $login_forbidden_chars)");
         }
+    }
+
+    return $result;
+}
+
+/* @function string check_mail_validity(string $mail)
+ * Check the mail against a filter call to make sure the mail is a valid mail adress.
+ * @param mail the mail to test against
+ * @return $result
+ */
+function check_mail_validity(string $mail) {
+    $result = "";
+
+
+    if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+        $result = "mailnotvalid"; 
     }
 
     return $result;
