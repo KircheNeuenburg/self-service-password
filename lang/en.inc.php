@@ -147,5 +147,5 @@ $messages['changemailmessage'] = "Hello {login},\n\nYour email address has been 
 $messages['changemailsubject'] = "Your email address has been changed";
 $messages['mailerror'] = "Email address was refused by the LDAP directory";
 $messages['mailnotvalid'] = "Email address is invalid";
-
+$messages['emptysendmailtokenform'] = "Email a mail address change link";
 ?>
