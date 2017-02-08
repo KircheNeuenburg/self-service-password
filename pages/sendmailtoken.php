@@ -39,7 +39,7 @@ if (!$mail_address_use_ldap) {
 if (isset($_REQUEST["login"]) and $_REQUEST["login"]) { $login = $_REQUEST["login"]; }
  else { $result = "loginrequired"; }
 if (! isset($_POST["mail"]) and ! isset($_REQUEST["login"]))
- { $result = "emptysendtokenform"; }
+ { $result = "emptysendmailtokenform"; }
 
 # Strip slashes added by PHP
 $login = stripslashes_if_gpc_magic_quotes($login);
